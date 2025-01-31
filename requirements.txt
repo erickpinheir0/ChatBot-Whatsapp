@@ -39,7 +39,6 @@ marshmallow==3.23.1
 multidict==6.1.0
 mypy-extensions==1.0.0
 nodeenv==1.9.1
-openai==1.57.4
 orjson==3.10.12
 packaging==24.2
 propcache==0.2.1

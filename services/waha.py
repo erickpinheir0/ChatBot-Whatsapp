@@ -19,3 +19,30 @@ class Waha:
 
         requests.post(url, headers=headers, json=payload)
         
+    def start_typing(self, chat_id):
+        url = f"{self.__api_url}/api/startTyping"
+
+        headers = {
+            "Content-Type": "application/json"
+        }
+
+        payload =  {
+            "session": "default",
+            "chatId": chat_id
+        }
+
+        requests.post(url, headers=headers, json=payload)
+    
+    def stop_typing(self, chat_id):
+        url = f"{self.__api_url}/api/stopTyping"
+
+        headers = {
+            "Content-Type": "application/json"
+        }
+
+        payload =  {
+            "session": "default",
+            "chatId": chat_id
+        }
+
+        requests.post(url, headers=headers, json=payload)
