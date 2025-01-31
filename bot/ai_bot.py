@@ -14,17 +14,17 @@ class AI_Bot:
 
     # Template para a manipulação da IA
     def invoke(self, question):
-        prompt = PromptTemplate.from_template(
-            input_variables=["question"],
+        prompt = PromptTemplate(
+            input_variables=["text"],
             template='''Você é um especialista em filmes, séries e livros, de diferentes gêneros. 
             Responda as questões do usuário fazendo diferentes recomendações, com base na exigência do usuário.
             Se o usuário não dizer os gêneros que ele gosta, pergunte sobre eles.
             Forneça a sinopse de cada filme, série ou livro recomendado, o titulo e o ano.
             Se o usuário for perguntar sobre um filme, série ou livro, responda com uma avaliação de 1 a 10, com base na sua experiência, e diga o motivo.
             Sempre responda de forma agradavel, com emojis e de forma que o usuário possa entender.
-            <question>
-            {question}
-            <question>
+            <text>
+            {text}
+            </text>
             '''
         )
 
@@ -32,7 +32,7 @@ class AI_Bot:
         chain = prompt | self.__chat | StrOutputParser()
 
         response = chain.invoke({
-            "question": question,
+            "text": question,
         })
 
         return response
